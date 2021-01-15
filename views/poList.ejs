@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PurchaseOrders</title>
+    <link
+      rel="stylesheet"
+      href="https://bootswatch.com/4/minty/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <!-- <header></header> -->
+    <div class="container" style="padding: 20px">
+      <div>
+        <div class="card card-body">
+          <h1 class="text-center mb-3">
+            <i class="fas fa-user-plus"></i> List of PurchaseOrders
+          </h1>
+          <%- include('common/messages'); %>
+
+
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">PO #</th>
+                <th scope="col">Supplier</th>
+                <th scope="col">Del Date</th>
+                <th scope="col">Job Ref</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Desc</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <% for (var i = 0; i < listOfPOS.docs.length; i++) { %>
+                <td><%= listOfPOS.docs[i].poNumber %></td>
+                <td><%= listOfPOS.docs[i].supplier %></td>
+                <td><%= listOfPOS.docs[i].deliveryDate.toDateString() %></td>
+                <td><%= listOfPOS.docs[i].jobRef.jobRef %></td>
+                <td><%= listOfPOS.docs[i].stock %></td>
+                <td><%= listOfPOS.docs[i].description %></td>
+
+                <td>
+
+
+                  <!-- <a href="/pos/poDetails/" class="btn btn-info btn-xs">View</a> -->
+                  <a href="/createPO/poDetail/<%= listOfPOS.docs[i].poNumber %>" class="btn btn-info btn-xs">Edit</a>
+                  <form action="/createPO/deletePO/<%= listOfPOS.docs[i]._id%>?_method=DELETE" method="POST">
+                    <input
+                    type="submit"
+                    value="Delete"
+                    class="btn btn-info btn-xs"
+                  />
+                </form>
+                    
+                    
+            
+                </td>
+
+              </tr>
+              <% }; %>
+              
+            </tbody>
+            
+          </table>
+          <div>
+          
+          <% if(listOfPOS.hasPrevPage){ %>
+      
+          
+            <a href="/createPO/poList?page=<%= listOfPOS.page-1%>" class="btn btn-dark">prev</a>
+            <%  }%> 
+          </div>
+
+          <div >
+          <% if(listOfPOS.hasNextPage){ %>
+      
+          
+            <a href="/createPO/poList?page=<%= listOfPOS.page+1%>"class="btn btn-dark" >next</a>
+          <%  }%> 
+        </div>
+         
+      </div>
+    </div>
+    <a href="/createPO/" class="btn btn-success">Go to Create PO</a>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Purchase order Creation</title>
+    <link
+      rel="stylesheet"
+      href="https://bootswatch.com/4/minty/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <!-- <header></header> -->
+    <div class="container" style="padding: 20px">
+      <div class="col-md-6 m-auto">
+        <div class="card card-body">
+          <h1 class="text-center mb-3">
+            <i class="fas fa-user-plus"></i> PO Creation
+          </h1>
+          <%- include('common/messages'); %>
+          <a class="btn btn-dark" href="/createPO/poList"> PO List</a>
+
+          <form action="/createPO/createPOPost" method="POST">
+            <div class="form-group">
+              <table class="table"></table>
+
+              <label>Purchase Order Number</label>
+              <td class="table">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="poNumber"
+                  name="poNumber"
+                />
+              </td>
+              <label>Supplier</label>
+              <td class="table">
+                <select class="form-control" name="supplier" id="supplier">
+                  <option value="Smarts">Smarts</option>
+                  <option value="CountyG">CountyG</option>
+                  <option value="Blakeley">Blakeley</option>
+                  <option value="Hydro">Hydro</option>
+                </select>
+              </td>
+              <br />
+              <label>Delivery Date</label>
+              <td class="table">
+                <input
+                  type="date"
+                  class="form-control"
+                  id="deliveryDate"
+                  name="deliveryDate"
+                />
+              </td>
+              <label>Job Reference</label>
+
+              <!-- //select option dropdown -->
+              <td class="table">
+                <select class="form-control" id="jobRef" name="jobRef">
+                  <% for (var i = 0; i < listOfJobs.length; i++) { %>
+                  <option value="<%= listOfJobs[i]._id %>">
+                    <%=listOfJobs[i].jobRef%>
+                  </option>
+
+                  <% }; %>
+                </select>
+              </td>
+              <label>Material group</label>
+              <td class="table">
+                <select class="form-control" name="stock" id="stock">
+                  <option value="Aluminium">Aluminium</option>
+                  <option value="Glass">Glass</option>
+                  <option value="PVC">PVC</option>
+                  <option value="Timber">Timber</option>
+                </select>
+              </td>
+              <br />
+              <label>Description</label>
+              <td class="table">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="description"
+                  name="description"
+                />
+              </td>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              Create
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

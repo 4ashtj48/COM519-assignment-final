@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>job list</title>
+    <link
+      rel="stylesheet"
+      href="https://bootswatch.com/4/minty/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <%- include('common/messages'); -%>
+    <div class="container">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Job Reference</th>
+            <th scope="col">Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% for (var i = 0; i < listOfJobs.length; i++) { %>
+            <td><%= listOfJobs[i].jobRef %></td>
+            <td><%= listOfJobs[i].address %></td>
+
+            <td>
+              <!-- <a href="/jobs/jobDetails/" class="btn btn-info btn-xs">View</a> -->
+              <a
+                href="/jobs/jobDetail/<%= listOfJobs[i].jobRef %> "
+                class="btn btn-info btn-xs"
+                >Edit</a
+              >
+              <!-- mongo id = _id -->
+              <form
+                action="/jobs/jobDelete/<%= listOfJobs[i]._id %>?_method=DELETE"
+                method="POST"
+              >
+                <input
+                  type="submit"
+                  value="Delete"
+                  class="btn btn-info btn-xs"
+                />
+              </form>
+            </td>
+          </tr>
+
+          <% }; %>
+        </tbody>
+      </table>
+      <a href="/jobs" class="btn btn-success">Go to Create Jobs</a>
+    </div>
+  </body>
+</html>

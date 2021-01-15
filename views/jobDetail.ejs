@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Ref Creation</title>
+    <link
+      rel="stylesheet"
+      href="https://bootswatch.com/4/minty/bootstrap.min.css"
+    />
+  </head>
+  <body>
+      
+    <div class="container" style="padding: 20px">
+      <div class="col-md-6 m-auto">
+        <div class="card card-body">
+          <h1 class="text-center mb-3">
+            <i class="fas fa-user-plus"></i> JobRef Creation
+          </h1>
+          <%- include('common/messages'); %>
+          <a class="btn btn-dark" href="/jobs/jobList">jobList</a>
+
+          <!-- app.js to using the post request from route -->
+          <form action="/jobs/jobUpdate/<%=job.jobRef %>?_method=PUT" method="POST">
+           
+            <div class="form-group">
+              <table class="table"></table>
+
+              <label>Job Reference</label>
+              <td class="table">
+                <input
+                 value="<%= job.jobRef %> "
+                  type="text"
+                  class="form-control"
+                  id="jobRef"
+                  name="jobRef"
+                />
+              </td>
+              <label>Address</label>
+              <td class="table">
+                <input
+                value="<%= job.address %> "
+                  type="text"
+                  class="form-control"
+                  id="address"
+                  name="address"
+                />
+              </td>
+              
+            <button type="submit" class="btn btn-primary btn-block">
+              update
+            </button>
+            
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
