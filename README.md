@@ -4,7 +4,7 @@ Hosted on Heroku
 https://arcane-hollows-24964.herokuapp.com/users/login
 
 Link to git repo 
-https://github.com/4ashtj48/COM519-assignment
+https://github.com/4ashtj48/COM519-assignment-final
 
 ## Setup
 
