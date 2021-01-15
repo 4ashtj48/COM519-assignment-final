@@ -2,7 +2,8 @@
 
 
 note to self before hand-in
-![](link to image)
+
+(assets\auth\Register.png)
 -create assets folders, path here
 
 
@@ -47,7 +48,7 @@ I wanted to recreate and try to streamline a few of the areas for creating a pur
 The proof-of-concept I will be developing will have three collections, users, purchase orders and job references. The primary function of this system will be to carry out the CRUD functions (create, read, update and delete) for both collections accessed by the user (jobrefs and po’s).
 The below robustness diagram shows a high-level overview of how the system should function.
 
-(robustness diagram here)
+![](assets/robustness.png)
 
 In terms of views, the user will be looking at five separate pages, a central controller to view all user functions, which are  createJob and createPO for the ‘create’ functions, ‘jobList’ and ‘poList’ for looking at a list of all jobs and purchase orders respectively. The idea was to have a delete and update/modify function alongside each of the results which redirects to the ‘create’ page again with all the information filled in as previous.
 
@@ -59,7 +60,7 @@ All of the data will in turn be stored in collections using mongoDB Atlas, which
 
 Firstly, I wanted to adopt the MVC(model, view, controller) stack which separates the application into logical components when configuring the application.
 
-(mvc diagram)
+![](assets/mvcStack.png)
 
 As a relatively common and up-to-date method of designing applications which I wanted to expand upon and adapt to my own programme. Simply, the users are only interacting with the ‘views’ whilst the controllers are containing the functions which are being used accessed, and finally the model, which is essentially the schema, breaking down the collection of data.
 
@@ -74,26 +75,26 @@ To log-in, allowing a user to authenticate and gain access to the rest of the da
 
   *	In this proof-of-concept, I have not removed the ability to register, so right now anyone can access this resource by making an account. In a full implementation, it would only allow a user to log-in if a password/user, email etc matched up with the user collection.
 
-(Login Menu- Passport Image)
+![](assets/loginPage.png)
 
 I have then provided a very simple central system- UI for navigation, allowing for people to access all relevant buttons which is only accessible by created users.
 
-(Central System UI Image)
+![](assets/centralServer.png)
 
 In order of creation, you would need a job reference to exist to be able to create a Purchase order. I have reduced the fields down for this model, only taking in ‘job ref’ and ‘address’ in the schema as I wanted to test the ‘relational’ aspect of the collections.
 
-(JobRef Creation Image)
+![](assets/jobRef.png)
 
 By simply asking in the model for the jobRef to be unique, acting similar to a primary key, no other job refs can be duplicated if one exists with the same jobRef. The end goal of this is to allow the job reference field when creating purchase orders to be accessible and allow to select from a list, combating a previous issue where users would frequently mistype or add prefixes in this input field.
 
-(Po creation image)
+![](assets/POcreation.png)
 
 There will be many PO’s which can use the same jobRef, and in this case PO number is the unique identifier. I have tried to make it so as many fields as possible drop-down options so that there is very little user discrepancy.
   *	To go further than this and allow for a larger collection of data, I would include a wild-card ‘*’ search function within each of these drop downs, including the jobRef field and I can identify this as being a current issue, users would have to scroll down for a long while if there were any more than 20 options
 
 ---
 
-(List of Purchase orders Image)
+![](assets/POlist.png)
 
 I have both a list of purchase orders and list of job references that can be accessed by the central controller. 
 Both edit functions use a poDetail/ jobDetail view respectively which essentially sends them back to the create pages, however has the record-fields filled out how they were in the list in the create view.
