@@ -21,6 +21,7 @@ https://github.com/4ashtj48/COM519-assignment-final
 ## Introduction
 
 I used to work as part of a purchasing team, and decided to base this project around the system I used to work with, which, for the most part, was very clunky, prone to user errors and needed many irrelevant fields to be filled in for it to process commands. This was mainly due to the company using software geared towards purchase ledger work such as invoicing and payroll management for procurement and sales functions.
+
 I wanted to recreate and try to streamline a few of the areas for creating a purchase order along with the surrounding system to see if it could be streamlined, along with using a non-relational database for some of the otherwise relational functions to present to the company a less rigid solution for creating and storing information.
 
 ---
@@ -80,6 +81,7 @@ There will be many PO’s which can use the same jobRef, and in this case PO num
 
 I have both a list of purchase orders and list of job references that can be accessed by the central controller. 
 Both edit functions use a poDetail/ jobDetail view respectively which essentially sends them back to the create pages, however has the record-fields filled out how they were in the list in the create view.
+
 The delete functions, both use the _id which is a mongoose variable it assigns as its own unique identifier it stores in the JSON format along with our schema to delete the record from the list.
 I found, when using DELETE and PUT methods with tables in HTML, a method-override function was required to have these working correctly with the routes.
 
@@ -108,6 +110,7 @@ Using the MVC stack was rather enlightening, it took a few steps to see through 
 In terms of a learning experience, this has been incredibly helpful. As aspiring to be a full-stack developer, using various tools and going beyond scope to use middleware such as passport and multer, pagination, using the MVC stack and interacting with more parts of bootstrap has been priceless.
 
 I will still likely be doing more work on this after the deadline as it has been a very useful module and has helped realise some of the trickier aspects of data handling and how to deal with them. An example is when showing the jobRef on the poList, having to use JSON.stringify and Json viewers to see how it was being handled before coming to a solution.
+
 Although I am happy with the outcome, there are still many aspects I would have liked to improve, such as originally planning on adding another collection ‘Stock’ with its own pricing and ID which would add another layer, however I believe I was a bit too optimistic with my original design to simulate other parts of the system.
 
 There are also a few issues with the finished design, as pointed out earlier, when a jobRef is deleted which is being used by a purchase order, the list, and the programme will break in its entirety. I would like to have implemented the ability to throw an error when trying to delete or change a jobRef when it is being used by a purchase order.
