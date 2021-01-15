@@ -5,7 +5,7 @@ note to self before hand-in
 ![](link to image)
 -create assets folders, path here
 
-###if hosting on heroku- change variables
+### if hosting on heroku- change variables
 const WEB_PORT = process.env.PORT
 server.listen(WEB_PORT, () => {});
 
