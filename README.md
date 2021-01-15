@@ -48,6 +48,7 @@ As a relatively common and up-to-date method of designing applications which I w
 
 A lot of decisions I made for this project were aimed to help me expand my own knowledge   implementing useful elements of full-stack development, aimed at giving me experience for future work as well as learning the intricacies of the framework such as node and express.
 Continuing this, although I was originally considering using an SQL database as my data does have some relational data, I decided to implement a non-relational database using MongoDB atlas for the clusters and passing in the JSON output which is used in the schemas.
+
 ---
 
 ## Database Design
@@ -110,5 +111,6 @@ I will still likely be doing more work on this after the deadline as it has been
 Although I am happy with the outcome, there are still many aspects I would have liked to improve, such as originally planning on adding another collection ‘Stock’ with its own pricing and ID which would add another layer, however I believe I was a bit too optimistic with my original design to simulate other parts of the system.
 
 There are also a few issues with the finished design, as pointed out earlier, when a jobRef is deleted which is being used by a purchase order, the list, and the programme will break in its entirety. I would like to have implemented the ability to throw an error when trying to delete or change a jobRef when it is being used by a purchase order.
+
 ---
 
