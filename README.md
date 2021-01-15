@@ -13,13 +13,16 @@ https://github.com/4ashtj48/COM519-assignment
 ``` cmd
 -$ npm install
 ```
+### running locally
 ```
 -$ npm run dev
 ```
 
 ## Introduction
+
 I used to work as part of a purchasing team, and decided to base this project around the system I used to work with, which, for the most part, was very clunky, prone to user errors and needed many irrelevant fields to be filled in for it to process commands. This was mainly due to the company using software geared towards purchase ledger work such as invoicing and payroll management for procurement and sales functions.
 I wanted to recreate and try to streamline a few of the areas for creating a purchase order along with the surrounding system to see if it could be streamlined, along with using a non-relational database for some of the otherwise relational functions to present to the company a less rigid solution for creating and storing information.
+
 ---
 
 ## System Overview
@@ -32,6 +35,7 @@ The below robustness diagram shows a high-level overview of how the system shoul
 In terms of views, the user will be looking at five separate pages, a central controller to view all user functions, which are  createJob and createPO for the ‘create’ functions, ‘jobList’ and ‘poList’ for looking at a list of all jobs and purchase orders respectively. The idea was to have a delete and update/modify function alongside each of the results which redirects to the ‘create’ page again with all the information filled in as previous.
 
 All of the data will in turn be stored in collections using mongoDB Atlas, which is using a cluster to store all current data including the user logins.
+
 ---
 
 ## Key design decisions
@@ -68,6 +72,7 @@ By simply asking in the model for the jobRef to be unique, acting similar to a p
 
 There will be many PO’s which can use the same jobRef, and in this case PO number is the unique identifier. I have tried to make it so as many fields as possible drop-down options so that there is very little user discrepancy.
   *	To go further than this and allow for a larger collection of data, I would include a wild-card ‘*’ search function within each of these drop downs, including the jobRef field and I can identify this as being a current issue, users would have to scroll down for a long while if there were any more than 20 options
+
 ---
 
 (List of Purchase orders Image)
@@ -79,6 +84,7 @@ I found, when using DELETE and PUT methods with tables in HTML, a method-overrid
 
   *	When deleting jobs, do not delete one that is attached to a Purchase order number, otherwise this will break the PO list and will need all related purchase orders to be deleted before the list works again.
   *	For future considerations, I would also not want all users to be able to delete job refs and purchase orders, possibly only assigning this function to the manager.
+
 ---
 
 ## Security & Scalability
@@ -89,6 +95,8 @@ This means, even if the user wants to attempt xml/ hyperlink injection to skip a
 
 In terms of scalability, non-relational databases tend to scale horizontally, as long as there are more servers and clusters available, this model could be transferable to a multitude of users. However, as I have mainly designed this with a small team of users in mind, I would not expect a massive increase in traffic.
 I do prefer how mongoDB allows for queries to be pulled from the system and, again would very easily be able to implement more views for other parts of the system, including a option to check against costs against a particular job, for example.
+
+
 ---
 
 ## Conclusion
